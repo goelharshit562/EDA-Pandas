@@ -2,15 +2,14 @@ import pandas as pd
 import numpy as np
 
 
-from pandas import stats
-
 import matplotlib.pyplot as plt
 import seaborn as sns
+%matplotlib inline
 
 
 cols = ['symboling', 'normalized-losses', 'make', 'fuel-type', 'aspiration', 'num-of-doors', 'body-style', 'drive-wheels', 'engine-location', 'wheel-base', 'length', 'width', 'height', 'curb-weight', 'engine-type', 'num-of-cylinders', 'engine-size', 'fuel-system', 'bore', 'stroke', 'compression-ratio', 'horsepower', 'peak-rpm', 'city-mpg', 'highway-mpg', 'price']
 
-df = pd.read_csv('C:/Users/harshitgoel01/Desktop/eda/data_2/imports-85.data.txt',names=cols)
+df = pd.read_csv('C:/Users/harshitgoel01/Desktop/eda/data_2/data/imports-85.data.txt',names=cols)
 
 df.head()
 
@@ -24,6 +23,10 @@ df.info()
 df['normalized-losses'] = df['normalized-losses'].astype(float)
 
 sns.histplot(data=df['normalized-losses'],kde=True)
+
+sns.swarmplot(x=df['normalized-losses'],data=df)
+
+sns.kdeplot(df['normalized-losses'], shade=True)
 
 sns.boxplot(data=df,x=df['normalized-losses'])
 
